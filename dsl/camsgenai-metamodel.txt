@@ -1,0 +1,53 @@
+package camsgenai
+
+class Context {
+  attr name : EString
+  attr description : EString
+  ref sensors[*] : Sensor
+  ref rules[*] : Rule
+  ref policies[*] : Policy
+}
+
+class Sensor {
+  attr name : EString
+  attr type : EString
+  attr frequency : EInt
+  attr source : EString
+}
+
+class Rule {
+  attr name : EString
+  attr condition : EString
+  attr action : EString
+  attr priority : EInt
+  ref sensors[*] : Sensor
+  ref policies[*] : Policy
+}
+
+class Policy {
+  attr name : EString
+  attr objective : EString
+  attr constraint : EString
+}
+
+class PromptTemplate {
+  attr name : EString
+  attr contextBlock : EString
+  attr constraintBlock : EString
+  attr objectiveBlock : EString
+  ref constraintSet : ConstraintSet
+  ref inferencePolicy : InferencePolicy
+}
+
+class ConstraintSet {
+  attr name : EString
+  attr syntaxRules : EString
+  attr semanticRules : EString
+  attr platformConstraints : EString
+}
+
+class InferencePolicy {
+  attr name : EString
+  attr reasoningType : EString
+  attr triggerCondition : EString
+}
