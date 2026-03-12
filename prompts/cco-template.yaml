@@ -1,0 +1,28 @@
+name: smart-logistics-monitoring
+
+context:
+  domain: smart logistics
+  environment: distributed edge-cloud
+  devices:
+    - mobile node
+    - edge gateway
+    - cloud backend
+  sensors:
+    - gps
+    - connectivity
+    - battery
+  connectivity: intermittent
+
+constraints:
+  dsl_version: CAMS-DSL-v2
+  platform: Android
+  architecture: edge-cloud
+  validation: PCS
+  runtime: adaptive
+
+objective:
+  goal: generate a context-aware logistics monitoring service
+  adaptation:
+    - trigger alerts on connectivity loss
+    - switch to local edge processing when cloud access is unavailable
+    - synchronize telemetry when connectivity is restored
